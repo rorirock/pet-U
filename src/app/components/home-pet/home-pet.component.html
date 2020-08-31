@@ -1,7 +1,23 @@
-<div class="">
-    <h2 class="tittle">Welcome to Pet-U</h2>
+<mat-grid-list cols="2" rowHeight="60px"class="back-tittle">
+    <mat-grid-tile class="container-tittle">
+        <h1 class="tittle">Pet-U</h1>
+    </mat-grid-tile>
+    <mat-grid-tile class="container-menu">
+        <button mat-button [matMenuTriggerFor]="menu" class="menu">Menu</button>
+            <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+        </mat-menu>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<div class="container-filters">
+    <app-filter-pet></app-filter-pet>
 </div>
-<div class="nav">
-    <button>search pet</button>
-    
+
+<div class="back-footer">
+    <div class="container-footer">
+        <a class="git" href="https://github.com/rorirock/pet-U">GitHub</a>
+    </div>
 </div>

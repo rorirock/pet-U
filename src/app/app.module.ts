@@ -9,6 +9,14 @@ import { HomePetComponent } from './components/home-pet/home-pet.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
 import { PetUService } from './services/pet-u.service';
 
 @NgModule({
@@ -22,6 +30,12 @@ import { PetUService } from './services/pet-u.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [
     PetUService

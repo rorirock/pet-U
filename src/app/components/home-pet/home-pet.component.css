@@ -1,0 +1,46 @@
+.back-tittle
+{
+    background: #A832C2;
+    width: 100%;
+}
+
+.container-tittle
+{
+    margin-right: 5%;
+}
+
+.tittle
+{
+  
+    font-family: "arial";
+    color: #ffffff;
+}
+
+.menu
+{
+    color:#ffffff;
+}
+
+.container-menu
+{
+  text-align: right;
+}
+
+.back-footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color:#A832C2;
+}
+
+.git
+{
+    color: #ffffff;
+}
+
+.container-footer
+{
+    margin-left: 5%;
+}
