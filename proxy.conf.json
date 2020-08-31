@@ -1,0 +1,7 @@
+{"/api/*": {
+    "target": "https://api.petfinder.com/",
+    "changeOrigin": true,
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
