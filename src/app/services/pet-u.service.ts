@@ -1,32 +1,66 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
-import {throwError as observableThrowError,  Observable } from 'rxjs'; 
-
+import { throwError as observableThrowError, Observable, Subject } from 'rxjs';
+import { TokenService } from './token.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PetUService {
+  public types = new Subject<string>();
+  public Breeds = new Subject<string>();
+  token: any;
+  constructor(private httpclient: HttpClient, private gettoken: TokenService) {}
 
-  constructor(private httpclient:HttpClient) { }
+  getTypePet(): void {
+    this.gettoken.getToken().subscribe(
+      (data) => {
+        this.token = data;
+        this.getpet(this.token.access_token).subscribe((data2) => {
+          this.types.next(data2);
+        });
+        return this.types.asObservable();
+      },
+      (error) => console.error(error)
+    );
+  }
 
-getTypePet(){
-  var headers = new HttpHeaders();
-  headers.append('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ6WUxpYzBHS2VTS2RzV29qY1puMm91VnhtOWN4SkNJd2JwcnFhRHMyUURBWTY1UUlueiIsImp0aSI6ImE5ZWVkNjUyNzdjZmQ3Njk2ZGUxMGE1YTNhYmMyZGM3NzYyMWNlYTQwMDExMmI2N2MxYmZkNmI5NWMwOGIwNWIxZDQ0MzIzNjFkZGQ0MzEzIiwiaWF0IjoxNTk4ODM2MDc1LCJuYmYiOjE1OTg4MzYwNzUsImV4cCI6MTU5ODgzOTY3NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.vNREjVhBqJngnvUzCl4iucsuYmrbCUhoAfRun1FqxGvUNGnH0H6gajNR3VU-9zqhXmosgBE6v1praZe_BLu4eUF4y-qZ0--gUPfYkA_1n4GojcnWiUICIoWI7NmJGkL3dLvglOCAQhMMcra81TO5_KEqQ2GAP6DSjwdYah7xRFBRuY0u2r5jxirQWwzH8M9Q4Crwa02c-dEt1TMz-Sy6wRuBeNSOo0738ezZJ5ENAu0SRev3gEDJWzMU2RmLnXdHwMfYfYmj_dlh78psz6xTl35TU3-NmL1PvWjGIPzvL7qTegR85GFDo_IE8_3HaloWtOS09y0wcxmStje47XatjA');
-  headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Requested-With, Accept');
-  headers.append('Access-Control-Allow-Origin', 'http://localhost:4200/');
+  getpet(token): Observable<any> {
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer' + ' ' + token,
+    });
+    return this.httpclient.get(environment.version + environment.UrlForTypes, { headers: headers });
+  }
+
+  getRacePet(type): void {
+    this.gettoken.getToken().subscribe(
+      (data) => {
+        this.token = data;
+        this.getBreeds(type,this.token.access_token).subscribe((dataBreeds) => {
+          console.log(dataBreeds);
+          this.Breeds.next(dataBreeds);
+        });
+        return this.Breeds.asObservable();
+      },
+      (error) => console.error(error)
+    );
+  }
 
 
-  const options = { headers: headers }
-  return this.httpclient.get('https://api.petfinder.com/v2/types', { headers: headers}).pipe(
-    tap((data)=> console.log("DATA AQUI +++ "+data)),  catchError(this.handleError)   
-  );
-}
+  getBreeds(type,token): Observable<any> {
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer' + ' ' + token,
+    });
+    return this.httpclient.get(environment.version + environment.UrlForTypes +'/' + type + environment.UrlForBreeds , { headers: headers })
+  }
 
-private handleError(err: HttpErrorResponse) {
-  console.log('Error', err);
-  return observableThrowError(err.error.message);
-}
 
 }

@@ -9,9 +9,25 @@ import { PetUService } from '../../services/pet-u.service';
 })
 export class FilterPetComponent implements OnInit {
 
-  constructor(private getTypePet:PetUService) { }
+  displayedColumns: string[] = ['specie', 'name', 'tag'];
+  response:any;
+  responseRace:any;
+  TypesPet:any = [];
+
+  constructor(private getTypePet:PetUService) {  }
 
   ngOnInit(): void {
+    this.getTypePet.getTypePet();
+    this.getTypePet.types.subscribe((data) => {
+    this.response = data;
+    this.TypesPet = this.response.types;
+     
+    });
+  }
+
+  RacePet(type): void {
+    this.getTypePet.getRacePet(type);
+    console.log("RESPUESTA DEL SERVER "+JSON.stringify(this.getTypePet.Breeds));
   }
 
 }

@@ -63,8 +63,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pet-U:build",
-            "proxyConfig": "proxy.conf.json"
+            "browserTarget": "pet-U:build"
           },
           "configurations": {
             "production": {

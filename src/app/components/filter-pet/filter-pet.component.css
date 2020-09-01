@@ -2,3 +2,42 @@
 {
     width: 100%;
 }
+
+.search-btn-filter
+{
+    margin-left: 20%;
+    box-shadow: 1px 1px 1px 1px #461797;
+}
+
+.container-filters
+{
+    text-align: center;
+   border-block-color:  #461797;;
+}
+
+.form-filters
+{
+    margin-bottom: 35%;
+    
+}
+
+.back-tittle-filters
+{
+    background: #a92dc5;
+    width: 100%;
+    color: #ffffff;
+    border: 1px;
+    height: 60px;;
+}
+
+.back-tittle-filters h2
+{
+    margin-left: 2%;
+}
+
+.table
+{
+    margin-bottom: 35%;
+    width: 90%;
+    box-shadow: 1px 3px 3px #461797;
+}

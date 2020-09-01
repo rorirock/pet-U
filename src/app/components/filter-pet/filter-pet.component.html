@@ -1,28 +1,58 @@
-<h2>Find your ideal pet</h2>
-<mat-form-field appearance="fill" class="back-filters">
-     <mat-grid-list cols="4" rowHeight="4:1">
-          <mat-grid-tile>
+<div class="back-tittle-filters">
+     <br />
+     <h2>Find your ideal pet </h2>
+     <mat-icon>thumb-up</mat-icon>
+</div>
+<br><br>
+<mat-grid-list cols="3">
+     <!--Pet Filters-->
+     <mat-grid-tile class="container-filters">
+  <form class="form-filters">
+          <br>
+          <mat-form-field appearance="fill">
                <mat-label>Species</mat-label>
                <mat-select>
-                    <mat-option value="option">Option</mat-option>
+                    <mat-option *ngFor="let pet of TypesPet" value='{{ pet.name }}' (click)="RacePet(pet.name)">
+                         {{ pet.name }}</mat-option>
                </mat-select>
-          </mat-grid-tile>
-          <mat-grid-tile >
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
                <mat-label>Race</mat-label>
                <mat-select>
                     <mat-option value="option">Option</mat-option>
                </mat-select>
-          </mat-grid-tile>
-          <mat-grid-tile >
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
                <mat-label>Tags</mat-label>
                <mat-select>
                     <mat-option value="option">Option</mat-option>
                </mat-select>
-          </mat-grid-tile>
-          <mat-grid-tile >
-               <button mat-button color="primary">search</button>
-          </mat-grid-tile>
-     </mat-grid-list>
-</mat-form-field>
+          </mat-form-field>
+          <br>
+          <button mat-button class="search-btn-filter">search <mat-icon>search</mat-icon></button>
+     </form>
+     </mat-grid-tile>
 
+     <!--Pet Lits-->
+     <mat-grid-tile [colspan]="2">
+          <table mat-table class="mat-elevation-z8 table">
+               <ng-container matColumnDef="specie">
+                    <th mat-header-cell *matHeaderCellDef> Specie </th>
+                    <td mat-cell>test </td>
+               </ng-container>
+               <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell>test </td>
+               </ng-container>
+               <ng-container matColumnDef="tag">
+                    <th mat-header-cell *matHeaderCellDef> Tag </th>
+                    <td mat-cell>test </td>
+               </ng-container>
 
+               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+     </mat-grid-tile>
+</mat-grid-list>
