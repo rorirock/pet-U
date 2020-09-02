@@ -1,1 +1,24 @@
-<p>info-pet works!</p>
+<div class="general-card">
+  <div class="card-header">
+    <h3 class="title-pet">{{generalInfo.name}}</h3>
+    <h5 class="subtitle-pet">{{generalInfo.type}} - {{generalInfo.breeds.primary}}</h5>
+  </div>
+  <hr>
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+      <img class="photo" src="{{generalInfo.photos[0].full}}" alt="Photo of a Shiba Inu">
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="content-card">
+        <p>
+          {{generalInfo.description}}
+        </p>
+        <ul>
+          <li>Age: {{generalInfo.age}}</li>
+          <li>Gender: {{generalInfo.gender}}</li>
+          <li>Size: {{generalInfo.size}} </li>
+        </ul>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

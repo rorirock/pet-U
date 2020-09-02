@@ -23,7 +23,7 @@
 
 .back-tittle-filters
 {
-    background: #a92dc5;
+    background: #6365c4;
     width: 100%;
     color: #ffffff;
     border: 1px;
@@ -34,10 +34,15 @@
 {
     margin-left: 2%;
 }
-
+.prueba{
+    height: 80%;
+    width: 90%;
+    max-width: 100%;
+    overflow: auto;
+    box-shadow: 1px 3px 3px #6365c4;
+}
 .table
 {
-    margin-bottom: 35%;
-    width: 90%;
-    box-shadow: 1px 3px 3px #461797;
+    width: 100%;
+    
 }

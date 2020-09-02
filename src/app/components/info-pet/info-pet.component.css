@@ -1,0 +1,33 @@
+.photo
+{
+    width: 250px;
+    height: 250px;
+    margin-bottom: 26%;
+    margin-top: 0%;
+    border-radius: 5% !important; 
+}
+
+.content-card
+{
+    margin-bottom: 34%;
+}
+
+.card-header
+{
+    justify-content: center;
+}
+
+.title-pet
+{
+    text-align: center;
+}
+
+.subtitle-pet{
+    text-align: center;
+}
+
+.general-card
+{
+    height: 80%;
+    box-shadow: none;
+}

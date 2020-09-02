@@ -14,8 +14,11 @@ import { environment } from 'src/environments/environment';
 })
 export class PetUService {
   public types = new Subject<string>();
-  public Breeds = new Subject<string>();
+  public breeds = new Subject<any>();
+  public tags = new Subject<any>();
+  public info = new  Subject<any>();
   token: any;
+  
   constructor(private httpclient: HttpClient, private gettoken: TokenService) {}
 
   getTypePet(): void {
@@ -39,20 +42,18 @@ export class PetUService {
     return this.httpclient.get(environment.version + environment.UrlForTypes, { headers: headers });
   }
 
-  getRacePet(type): void {
-    this.gettoken.getToken().subscribe(
+  getRacePet(type): any {
+    return this.gettoken.getToken().subscribe(
       (data) => {
         this.token = data;
         this.getBreeds(type,this.token.access_token).subscribe((dataBreeds) => {
-          console.log(dataBreeds);
-          this.Breeds.next(dataBreeds);
+          this.breeds.next(dataBreeds);
         });
-        return this.Breeds.asObservable();
+        return this.breeds.asObservable();
       },
       (error) => console.error(error)
     );
   }
-
 
   getBreeds(type,token): Observable<any> {
     const headers = new HttpHeaders({
@@ -60,6 +61,48 @@ export class PetUService {
       Authorization: 'Bearer' + ' ' + token,
     });
     return this.httpclient.get(environment.version + environment.UrlForTypes +'/' + type + environment.UrlForBreeds , { headers: headers })
+  }
+
+  getTagPet(type,breed): any {
+    return this.gettoken.getToken().subscribe(
+      (data) => {
+        this.token = data;
+        this.getTags(type,breed,this.token.access_token).subscribe((dataTags) => {
+          this.tags.next(dataTags);
+        });
+        return this.tags.asObservable();
+      },
+      (error) => console.error(error)
+    );
+  }
+
+  getTags(type,breed,token): Observable<any> {
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer' + ' ' + token,
+    });
+    return this.httpclient.get(environment.version + environment.ulrFortags +'?type=' + type + '&breed='+ breed , { headers: headers })
+  }
+
+  getInfoPet(id){
+    this.gettoken.getToken().subscribe(
+      (data) => {
+        this.token = data;
+        this.getInfo(id,this.token.access_token).subscribe((dataInfo) => {
+          this.info.next(dataInfo);
+        });
+        return this.info.asObservable();
+      },
+      (error) => console.error(error)
+    );
+  }
+
+  getInfo(id,token){
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer' + ' ' + token,
+    });
+    return this.httpclient.get(environment.version + environment.ulrFortags + '/'+id, { headers: headers })
   }
 
 

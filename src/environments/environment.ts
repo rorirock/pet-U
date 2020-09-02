@@ -11,7 +11,8 @@ export const environment = {
   UrlgetToken : "https://api.petfinder.com/v2/oauth2/token",
   version : 'v2/',
   UrlForTypes:'types',
-  UrlForBreeds:'/breeds'
+  UrlForBreeds:'/breeds',
+  ulrFortags:'animals'
 
 };
 
