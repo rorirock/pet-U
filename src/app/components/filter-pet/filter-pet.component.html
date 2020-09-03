@@ -4,14 +4,14 @@
      <mat-icon>thumb-up</mat-icon>
 </div>
 <br><br>
-<mat-grid-list cols="3">
+<mat-grid-list cols="3"  class="wallpaper-filter">
      <!--Pet Filters-->
      <mat-grid-tile class="container-filters">
   <form class="form-filters">
           <br>
           <mat-form-field appearance="fill">
-               <mat-label>Species</mat-label>
-               <mat-select >
+               <mat-label><b>  Species</b> </mat-label>
+               <mat-select [(value)]="selectType">
                     <mat-option *ngFor="let pet of typesPet" value='{{ pet.name }}' (click)="RacePet(pet.name)">
                          {{ pet.name }}</mat-option>
                </mat-select>
@@ -19,17 +19,17 @@
           <br>
 
           <mat-form-field   appearance="fill">
-               <mat-label>Breeds</mat-label>
-               <input  type="text" [(ngModel)]="selectBreed" matInput [formControl]="myControl" [matAutocomplete]="auto">
-               <mat-autocomplete  #auto="matAutocomplete">
+               <mat-label><b> Breeds</b> </mat-label>
+               <input [disabled]="selectType ? false : true"  type="text" [(ngModel)]="selectBreed" matInput [formControl]="myControl" [matAutocomplete]="auto">
+               <mat-autocomplete  #auto="matAutocomplete" >
                     <mat-option *ngFor="let breed of filteredOptions | async" [value]="breed.name" (click)="tagsPet()">{{breed.name}}</mat-option>
                </mat-autocomplete>
           </mat-form-field>
           
           <br>
           <mat-form-field appearance="fill">
-               <mat-label>Tags</mat-label>
-               <mat-select>
+               <mat-label><b> Tags</b> </mat-label>
+               <mat-select [(value)]="selectedTag" [disabled]="selectBreed ? false : true">
                     <mat-option *ngFor="let tag of typesTags" value='{{tag}}'>{{tag}}</mat-option>
                </mat-select>
           </mat-form-field>
@@ -40,7 +40,7 @@
 
      <!--Pet Lits-->
      <mat-grid-tile [colspan]="2">
-          <div class="prueba">
+          <div class="content-table">
           <table mat-table [dataSource]="listPets" class="mat-elevation-z8 table" >
                <ng-container matColumnDef="specie">
                     <th mat-header-cell *matHeaderCellDef> Specie </th>

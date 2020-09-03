@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FilterPetComponent } from './components/filter-pet/filter-pet.component';
 import { InfoPetComponent } from './components/info-pet/info-pet.component';
 import { HomePetComponent } from './components/home-pet/home-pet.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -23,6 +24,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatCardModule} from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { PetUService } from './services/pet-u.service';
 import { TokenService } from './services/token.service';
@@ -33,6 +35,7 @@ import { TokenService } from './services/token.service';
     FilterPetComponent,
     InfoPetComponent,
     HomePetComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { TokenService } from './services/token.service';
     FormsModule,
     MatDialogModule,
     MatCardModule,
+    MatSnackBarModule,
   ],
   providers: [
     PetUService,

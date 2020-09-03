@@ -3,16 +3,26 @@
     width: 100%;
 }
 
+.wallpaper-filter
+{
+  background-image: url('../../../images/paws-road.png');
+  background-repeat: no-repeat;
+  
+  background-position-y: 80%;
+}
+
 .search-btn-filter
 {
-    margin-left: 20%;
-    box-shadow: 1px 1px 1px 1px #461797;
+    width: 100%;
+    background: #008ac0;
+    color: #ffffff;
+    box-shadow: 1px 1px 1px 1px #000260;
 }
 
 .container-filters
 {
     text-align: center;
-   border-block-color:  #461797;;
+    border-block-color:  #461797;
 }
 
 .form-filters
@@ -34,7 +44,8 @@
 {
     margin-left: 2%;
 }
-.prueba{
+.content-table{
+    background:#FFFFFF !important;
     height: 80%;
     width: 90%;
     max-width: 100%;

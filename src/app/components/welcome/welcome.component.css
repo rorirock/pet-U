@@ -1,0 +1,22 @@
+.container-welcome
+{
+    height: 500px;
+    background-image: url('../../../images/adopt-a-pet.jpg');
+	background-size:  100% 80%;
+	background-repeat: no-repeat;
+    position: relative;
+    
+}
+
+.title-welcome
+{ 
+    height: 80%;;
+    background-color: rgba(0,0,0,0.2);
+    color: #FFFFFF;
+    text-align: center;
+}
+
+h1
+{
+    font-size-adjust:  2em;
+}

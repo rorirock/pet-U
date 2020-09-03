@@ -1,27 +1,28 @@
 .back-tittle
 {
-    background: #6365c4;
+    background: #FFFFFF;
     width: 100%;
     box-shadow: 0px 2px 2px #4a494a;
 }
 
 .container-tittle
 {
-    margin-right: 5%;
+
 }
-
-
 
 .tittle
 {
+    margin-right: 82%;
+    margin-top: 2%;
     font-weight: 600;
     font-family: fantasy;
-    color: #ffffff;
+    color: #6365c4;
 }
 
 .menu
 {
-    color:#ffffff;
+    margin-left: 82%;
+    color:#6365c4;
 }
 
 .container-menu

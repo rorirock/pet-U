@@ -5,6 +5,8 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {InfoPetComponent} from '../info-pet/info-pet.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-filter-pet',
@@ -22,9 +24,10 @@ export class FilterPetComponent implements OnInit {
   typesTags = [];
   selectBreed: any;
   selectType: any;
+  selectedTag: string;
   filteredOptions: Observable<string[]>;
   listPets:any=[];
-  constructor(private getTypePet: PetUService, public dialog: MatDialog) {}
+  constructor(private getTypePet: PetUService, public dialog: MatDialog, private alert:MatSnackBar) {}
 
   ngOnInit(): void {
     this.getTypePet.getTypePet();
@@ -35,7 +38,6 @@ export class FilterPetComponent implements OnInit {
   }
 
   RacePet(type): void {
-    this.selectType = type;
     this.getTypePet.getRacePet(type);
     this.getTypePet.breeds.subscribe((data) => {
       this.responseRace = data;
@@ -55,24 +57,44 @@ export class FilterPetComponent implements OnInit {
   }
 
   tagsPet() {
+    this.typesTags =[];
     this.getTypePet.getTagPet(this.selectType, this.selectBreed);
     this.getTypePet.tags.subscribe((data) => {
       this.responseTags = data;
       this.responseTags.animals.forEach((animal) => {
-        Array.prototype.push.apply(this.typesTags, animal.tags);
+        Array.prototype.push.apply(this.typesTags, animal.tags);        
       });
+      this.typesTags = this.typesTags.filter((value, indice, objet) => objet.indexOf(value) === indice);
     });
   }
+
 
   getPets(){
     this.getTypePet.getTagPet(this.selectType, this.selectBreed);
     this.getTypePet.tags.subscribe((data) => {
       this.listPets = data.animals;
+        if (this.selectedTag) {
+            this.listPets = data.animals.filter(animal => {
+              return animal.tags.indexOf(this.selectedTag) !== -1;
+            });
+        }
+        //if(this.listPets.lenght < 1){
+        //  this.alertMessage("No results found", "Info!");
+       // }
+      
     });
   }
 
   info(id){
-    const dialogRef = this.dialog.open(InfoPetComponent,{width: "60%", height:"60%",data: {id: id}});
+    const dialogRef = this.dialog.open(InfoPetComponent,{width: "60%", height:"70%",data: {id: id}});
   }
+
+  alertMessage(message: string, action: string) {
+    this.alert.open(message, action, {
+      duration: 5000, horizontalPosition: "right",
+      verticalPosition: "top",
+    });
+  }
+
 }
 

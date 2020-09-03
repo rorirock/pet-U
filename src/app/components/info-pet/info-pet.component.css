@@ -28,6 +28,12 @@
 
 .general-card
 {
-    height: 80%;
+    
     box-shadow: none;
+    background-image: url('../../../images/paw.png');
+    background-repeat: no-repeat;
+    background-size: 30% 30%;
+    background-position-x: 100%;
+    background-position-y: 80%;
+      
 }

@@ -1,18 +1,19 @@
 <mat-grid-list cols="2" rowHeight="60px"class="back-tittle">
     <mat-grid-tile class="container-tittle">
-        <mat-icon>paw</mat-icon><h1 class="tittle">Pet-U</h1>
+        <h1 class="tittle">Pet-U</h1>
     </mat-grid-tile>
     <mat-grid-tile class="container-menu">
         <button mat-button [matMenuTriggerFor]="menu" class="menu">Menu <mat-icon>menu</mat-icon> </button>
             <mat-menu #menu="matMenu">
-            <button mat-menu-item>Home</button>
-            <button mat-menu-item>Search pet</button>
+            <button mat-menu-item (click)="selectHome()">Home</button>
+            <button mat-menu-item (click)="selectFilter()">Search pet</button>
         </mat-menu>
     </mat-grid-tile>
 </mat-grid-list>
 
 <div class="container-filters">
-    <app-filter-pet></app-filter-pet>
+    <app-filter-pet *ngIf="filterpage"false></app-filter-pet>
+    <app-welcome  *ngIf="welcomepage"></app-welcome>
 </div>
 
 
