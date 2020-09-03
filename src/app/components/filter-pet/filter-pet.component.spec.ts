@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterPetComponent } from './filter-pet.component';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('FilterPetComponent', () => {
   let component: FilterPetComponent;
@@ -19,7 +20,8 @@ describe('FilterPetComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("test", function(){
+    expect(component.RacePet('Dog'))
   });
+  
 });

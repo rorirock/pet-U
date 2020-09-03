@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetUService } from '../../services/pet-u.service';
 import { FormControl } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, isEmpty } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {InfoPetComponent} from '../info-pet/info-pet.component';
@@ -78,10 +78,10 @@ export class FilterPetComponent implements OnInit {
               return animal.tags.indexOf(this.selectedTag) !== -1;
             });
         }
-        //if(this.listPets.lenght < 1){
-        //  this.alertMessage("No results found", "Info!");
-       // }
-      
+        var count = this.listPets.length;
+        if(count < 1){
+          this.alertMessage("No results found", "Info!");
+        }
     });
   }
 
@@ -91,7 +91,8 @@ export class FilterPetComponent implements OnInit {
 
   alertMessage(message: string, action: string) {
     this.alert.open(message, action, {
-      duration: 5000, horizontalPosition: "right",
+      duration: 5000, 
+      horizontalPosition: "right",
       verticalPosition: "top",
     });
   }
