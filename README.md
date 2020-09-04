@@ -26,8 +26,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## Clone git
 
-Pasos para ejecutar la App
+## Pasos para ejecutar la App
 
 1. Clonar App en local con git clone https://github.com/rorirock/pet-U
 2. Ejecutar  npm start en  consola "en la carpeta del proyecto"
@@ -35,7 +36,7 @@ Pasos para ejecutar la App
 
 -------------------------------------
 
-Steps to run the App
+## Steps to run the App
 
 1. Clone App in local with git clone https://github.com/rorirock/pet-U
 2. Execute npm start in console "in the project folder"
