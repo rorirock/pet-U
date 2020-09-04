@@ -20,8 +20,4 @@ describe('FilterPetComponent', () => {
     fixture.detectChanges();
   });
 
-  it("test", function(){
-    expect(component.RacePet('Dog'))
-  });
-  
 });
